@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.awspractice.book.mapper.PostMapper">
+
+    <insert id="regist">
+        INSERT INTO post (post_title, post_content, author)
+        VALUES (#{postTitle}, #{postContent}, #{author})
+    </insert>
+
+
+
+    <select id="getPosts">
+        SELECT post_id, post_title, post_content, author , create_at
+        FROM post
+    </select>
+
+    <select id="getPostById">
+        SELECT post_id, post_title, post_content, author , create_at
+        FROM post
+        WHERE post_id = #{postId}
+    </select>
+
+
+    <update id="updatePost">
+        UPDATE post
+        SET post_title = #{postTitle},
+            post_content = #{postContent},
+            author = #{author},
+            update_at = NOW()
+        WHERE post_id = #{postId}
+    </update>
+
+
+    <delete id="deletePostById">
+        DELETE FROM post
+        WHERE post_id = #{postId}
+    </delete>
+
+
+</mapper>
