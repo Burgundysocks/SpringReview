@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${post.postTitle}</td>
                         <td>${post.author}</td>
                         <td>${post.createAt}</td>
-                        <td><a href="" onclick="ModifyForm(${post.postId})">수정</a></td>
-                        <td><a href="" onclick="deletePost(${post.postId})">삭제</a></td>
+                        <td><a href="#" onclick="ModifyForm(${post.postId})">수정</a></td>
+                        <td><a href="#" onclick="deletePost(${post.postId})">삭제</a></td>
                     `;
 
                     postList.appendChild(row);
