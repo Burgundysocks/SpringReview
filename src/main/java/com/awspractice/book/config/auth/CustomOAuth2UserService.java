@@ -4,7 +4,6 @@ import com.awspractice.book.config.auth.dto.OAuthAttributes;
 import com.awspractice.book.config.auth.dto.SessionUser;
 import com.awspractice.book.domain.dto.UserDTO;
 import com.awspractice.book.mapper.UserMapper;
-import com.awspractice.book.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
