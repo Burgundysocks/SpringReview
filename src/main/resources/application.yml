@@ -11,7 +11,25 @@ spring:
   thymeleaf:
     cache: false
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 972500315791-jn4f929v40m5phum4fpepv1imn958rk1.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: "http://localhost:8080/login/oauth2/code/google"
+            scope: profile, email
+
+
 mybatis:
   config-location: classpath:/mybatis-config.xml
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.awspractice.book.dto
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.apache.coyote.http11: DEBUG
+    org.apache.tomcat.util.net: DEBUG
