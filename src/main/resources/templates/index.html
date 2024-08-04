@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <th:block th:replace="~{/layout/header}"></th:block>
+    <div id="wrap">
+        <div class="main_container">
+            <div class="main_top">
+                <div class="today">
+                    <div class="to_head">
+
+                    </div>
+                    <div class="to_body">
+
+                    </div>
+                    <!-- 오늘 올라온 글 -->
+                </div>
+                <div class="hot_topic">
+                    <div class="ht_head">
+
+                    </div>
+                    <div class="ht_body">
+
+                    </div>
+                    <!-- 인기글 -->
+                </div>
+            </div>
+            <div class="main_middle">
+                <div class="shop_new">
+                    <div class="sn_head"></div>
+                    <div class="sn_body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="~{/layout/footer}"></th:block>
+</body>
+</html>

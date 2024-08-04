@@ -1,0 +1,16 @@
+#wrap{
+    width : 100%;
+    margin : 0 auto;
+    font-family: Arial, sans-serif;
+}
+.footer{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 100%;
+    border-top: 1px solid black;
+    justify-content: center;
+}
+.left{
+    margin-right: 10px;
+}
