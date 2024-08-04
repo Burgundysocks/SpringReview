@@ -27,6 +27,9 @@ public class OAuthAttributes {
                                      Map<String, Object> attributes) {
         return ofGoogle(userNameAttributeName, attributes);
     }
+    //of는 OAuth2User에서 반환하는 사용자 정보는 MAP이기 때문에 값 하나하나를 변환해야만 한다.
+
+
     public static OAuthAttributes ofGoogle(String userNameAttributeName,
                                            Map<String, Object> attributes) {
         return OAuthAttributes.builder()
@@ -36,6 +39,7 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
+
     public UserDTO toEntity() {
         return UserDTO.builder()
                 .name(name)
@@ -43,5 +47,10 @@ public class OAuthAttributes {
                 .role(Role.GUEST)
                 .build();
     }
+    //USER ENTITY 생성
+    //OAuthAttributes에서 엔티티를 생성하는 시점은 처음가입할 때
+    //이때 기본적으로 권한을 GUEST를 줌
+    //생성이 끝나면 SessionUser 클래스 추가
+
 
 }

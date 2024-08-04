@@ -26,12 +26,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
-        // 현재 로그인 진행 중인 서비스를 구분하는 코드
-        String registrationId = userRequest
-                .getClientRegistration()
+
+        String registrationId = userRequest // 현재 로그인 진행 중인 서비스를 구분하는 코드
+                .getClientRegistration()    //현재는 구글만 사용하고 있지만, 네이버로그인도 연동하게 되면 구분해야함
                 .getRegistrationId();
-        // oauth2 로그인 진행 시 키가 되는 필드값
-        String userNameAttributeName = userRequest.getClientRegistration()
+
+        String userNameAttributeName = userRequest.getClientRegistration()// oauth2 로그인 진행 시 키가 되는 필드값 PK와 같음
                 .getProviderDetails()
                 .getUserInfoEndpoint()
                 .getUserNameAttributeName();
