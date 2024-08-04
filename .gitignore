@@ -36,3 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 
+# Ignore application.yml to prevent committing secrets
+src/main/resources/application.yml
+
+
