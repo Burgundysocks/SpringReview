@@ -30,7 +30,7 @@ public class SecurityConfig {
                                 "/images/**",
                                 "/js/**"
                         ).permitAll()  // 모든 사용자에게 허용
-                        .requestMatchers("/api/**").hasRole(Role.USER.name())  //api/** 주소를 가진 api는 USER만 사용할 수 잇도록 설정
+                        .requestMatchers("/api/**").hasRole(Role.GUEST.name())  //api/** 주소를 가진 api는 USER만 사용할 수 잇도록 설정
                         .anyRequest().authenticated()  // 나머지 요청은 인증 필요
                 )
                 // 로그아웃 설정

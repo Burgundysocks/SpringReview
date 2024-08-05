@@ -6,19 +6,19 @@
 <mapper namespace="com.awspractice.book.mapper.PostMapper">
 
     <insert id="regist">
-        INSERT INTO post (post_title, post_content, author)
+        INSERT INTO post (post_title, post_content, userId)
         VALUES (#{postTitle}, #{postContent}, #{author})
     </insert>
 
 
 
     <select id="getPosts">
-        SELECT post_id, post_title, post_content, author , create_at
-        FROM post
+        SELECT post_id, post_title, post_content, userId, create_at
+        FROM post ORDER BY post_id DESC
     </select>
 
     <select id="getPostById">
-        SELECT post_id, post_title, post_content, author , create_at
+        SELECT post_id, post_title, post_content, userId, create_at
         FROM post
         WHERE post_id = #{postId}
     </select>
@@ -28,8 +28,7 @@
         UPDATE post
         SET post_title = #{postTitle},
             post_content = #{postContent},
-            author = #{author},
-            update_at = NOW()
+            user_id = #{userId},
         WHERE post_id = #{postId}
     </update>
 

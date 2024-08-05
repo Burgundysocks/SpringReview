@@ -6,6 +6,7 @@
 .header{
     height: 170px;
     margin-top: 30px;
+   
 }
 .header_main{
     height: 100px;
@@ -21,75 +22,93 @@
     height: 80px;
     margin-left: 20px;
 }
+.logo a{
+    width:100%;
+    height: 100%;
+}
+.logo a p{
+    width:100%;
+    height:100%;
+}
+.logo a:hover{
+    cursor: pointer;
+}
+
 .search_bar{
     display: flex;
     width: 450px;
-    background-color: aqua;
+    background-color: dodgerblue;
     height: 80px;
     margin-left: 20px;
 }
-.search_bar img{
-    width: 100px;
-    height: 80px;
-}
+
 .search_bar input{
-    width: 250px;
-    height: 70px;
-    border: 4px solid black;
+    width: 320px;
+    height: 76px;
+    border: none;
+    border: 1px solid dodgerblue;
 }
 .search_bar button{
-    width: 90px;
+    width: 120px;
     height: 80px;
+    background-color: dodgerblue;
+    border: none;
+    font-size: 25px;
+    color: white;
+}
+.search_bar button:hover{
+    cursor: pointer;
 }
 .gap{
     width: 300px;
     height: 80px;
     margin-left: 30px;
-    background-color: red;
+  
 }
 .icon{
     display: flex;
     width: 350px;
     height: 80px;
     margin-left: 20px;
-    background-color: blue;
-    justify-content: space-around;
+    align-items: center;
 }
+
 .login{
-    width: 90px;
-    height: 80px;
-    margin-left: 10px;
-}
-.login{
-    width: 90px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     margin-left: 20px;
-    background-color: aqua;
 }
 .my_info{
-    width: 90px;
-    height: 80px;
-    margin-left: 20px;
-    background-color: aqua;
+    width: 40px;
+    height: 40px;
+    margin-left: 30px;
+
 }
 .nav_bar{
     width: 100%;
     height: 50px;
     background-color: dodgerblue;
-    border-bottom: 1px solid purple;
+    border-bottom: blue;
 }
 .nav_list{
     width: 30%;
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 .nav_list li{
+    display: flex;
     width: 20%;
     height: 100%;
     list-style: none;
     line-height: 45px;
+    justify-content: center;
+    align-items: center;
+}
+.nav_list li:hover{
+    color: blue;
 }
 .nav_list li a{
     font-size: 20px;

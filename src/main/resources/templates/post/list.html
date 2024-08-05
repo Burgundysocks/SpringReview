@@ -1,29 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>게시물 목록</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <script th:src="@{/js/main.js}" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/post/list.css}">
+    <!-- <script th:src="@{/js/list.js}"></script> -->
 </head>
 <body>
-<h1>게시물 목록</h1>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>수정</th>
-        <th>삭제</th>
-    </tr>
-    </thead>
-    <tbody id="post-list">
- 
-    </tbody>
-</table>
-<a href="#" onclick="CreateForm()">게시물 작성</a>
-
-<div id="form-container"></div>
+    <th:block th:replace="~{/layout/header}"></th:block>
+    <div id="wrap">
+        <div class="main_container">
+            <div id="post_list">
+                <div class="pt_top">
+                    <h2>게시판</h2>
+                </div>
+                <div class="post">
+                    <a href="">
+                        <div class="pt_number">
+                            <h3>1</h3>
+                        </div>
+                        <div class="pt_title">
+                            <h3>테스트</h3>
+                        </div>
+                        <div class="writer">
+                            <h3>정상현</h3>
+                        </div>
+                        <div class="create_time">
+                            <h4>2024.08.05</h4>
+                        </div>
+                        <div class="pt_recommand">
+                            <p>추천수 : 25</p>
+                        </div>
+                        <div class="view_cnt">
+                            <p>조회수 : 300</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="writebutton">
+            <button>글쓰기</button>
+        </div>
+    </div>
+    <th:block th:replace="~{/layout/footer}"></th:block>
 </body>
 </html>
