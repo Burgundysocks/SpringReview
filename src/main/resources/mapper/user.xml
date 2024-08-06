@@ -5,37 +5,38 @@
 
 <mapper namespace="com.awspractice.book.mapper.UserMapper">
 
-    <!-- SQL insert query for saving a new user -->
-    <insert id="save" parameterType="com.awspractice.book.domain.dto.UserDTO">
-        INSERT INTO user (id, name, email, picture, role)
-        VALUES (#{id}, #{name}, #{email}, #{picture}, #{role})
+
+    <insert id="save">
+        INSERT INTO user (name, email, nickname, password, picture, role)
+        VALUES (#{name}, #{email}, COALESCE(#{nickname}, SUBSTRING(MD5(RAND()), 1, 6)), #{password}, #{picture}, #{role})
     </insert>
 
-    <!-- SQL select query for finding a user by email -->
-    <select id="findByEmail" resultType="com.awspractice.book.domain.dto.UserDTO">
-        SELECT id, name, email, picture, role
+    <select id="findByEmail">
+        SELECT *
         FROM user
         WHERE email = #{email}
     </select>
 
-    <!-- SQL update query for updating a user -->
-    <update id="update" parameterType="com.awspractice.book.domain.dto.UserDTO">
+    <select id="findById">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <update id="update">
         UPDATE user
-        SET name = #{name}, picture = #{picture}, role = #{role}
+        SET email = #{email},
+            nickname = #{nickname},
+            password = #{password},
+            picture = #{picture},
         WHERE id = #{id}
     </update>
 
-    <!-- SQL delete query for deleting a user by id -->
-    <delete id="delete" parameterType="Long">
+
+    <delete id="delete">
         DELETE FROM user
         WHERE id = #{id}
     </delete>
 
-    <!-- SQL update query for updating name and picture for a user -->
-    <update id="updateNameAndPicture">
-        UPDATE user
-        SET name = #{name}, picture = #{picture}
-        WHERE id = #{id}
-    </update>
 
 </mapper>

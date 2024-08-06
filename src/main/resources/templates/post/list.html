@@ -39,8 +39,10 @@
                 </div>
             </div>
         </div>
-        <div class="writebutton">
-            <button>글쓰기</button>
+        <div class="write_button_zone">
+            <a th:href="@{/board/user/write}" class="write_button">
+                <button>글쓰기</button>
+            </a>    
         </div>
     </div>
     <th:block th:replace="~{/layout/footer}"></th:block>

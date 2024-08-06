@@ -44,7 +44,7 @@ public class OAuthAttributes {
         return UserDTO.builder()
                 .name(name)
                 .email(email)
-                .role(Role.GUEST)
+                .role(Role.USER)
                 .build();
     }
     //USER ENTITY 생성

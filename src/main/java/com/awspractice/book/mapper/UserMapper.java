@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface UserMapper {
     int save(UserDTO user);
     UserDTO findByEmail(String email);
+    UserDTO findById(Long id);
     int update(UserDTO user);
     int delete(Long id);
 

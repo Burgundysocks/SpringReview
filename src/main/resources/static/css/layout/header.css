@@ -1,119 +1,146 @@
-#wrap{
-    width : 100%;
-    margin : 0 auto;
+/* 공통 스타일 */
+#wrap {
+    width: 100%;
+    margin: 0 auto;
     font-family: Arial, sans-serif;
 }
-.header{
+
+/* 헤더 스타일 */
+.header {
     height: 170px;
     margin-top: 30px;
-   
 }
-.header_main{
+
+/* 헤더 메인 부분 스타일 */
+.header_main {
     height: 100px;
     display: flex;
     width: 80%;
     margin: 0 auto;
-    justify-content: space-around;
+    justify-content: space-between; /* 공간 균등 배치 */
     align-items: center;
 }
-.logo{
+
+/* 로고 스타일 */
+.logo {
     width: 200px;
     background-color: black;
     height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 20px;
 }
-.logo a{
-    width:100%;
+
+.logo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     height: 100%;
+    text-decoration: none;
 }
-.logo a p{
-    width:100%;
-    height:100%;
+
+.logo a p {
+    color: white; 
 }
-.logo a:hover{
+
+.logo a:hover {
     cursor: pointer;
 }
 
-.search_bar{
+
+.search_bar {
     display: flex;
-    width: 450px;
+    width: 500px;
     background-color: dodgerblue;
-    height: 80px;
-    margin-left: 20px;
+    height: 50px;
+    border-radius: 5px; 
 }
 
-.search_bar input{
-    width: 320px;
-    height: 76px;
-    border: none;
+.search_bar input {
+    width: 400px;
+    height: 48px;
     border: 1px solid dodgerblue;
+    border-radius: 5px 0 0 5px; 
+    padding: 0 10px; 
+    outline: none;
 }
-.search_bar button{
+
+.search_bar button {
     width: 120px;
-    height: 80px;
+    height: 50px;
     background-color: dodgerblue;
     border: none;
-    font-size: 25px;
+    font-size: 18px; 
     color: white;
-}
-.search_bar button:hover{
+    border-radius: 0 5px 5px 0; 
     cursor: pointer;
 }
-.gap{
-    width: 300px;
-    height: 80px;
-    margin-left: 30px;
-  
+
+.search_bar button:hover {
+    background-color: darkblue; 
 }
-.icon{
+
+
+.icon, .gap {
     display: flex;
-    width: 350px;
-    height: 80px;
-    margin-left: 20px;
     align-items: center;
 }
 
-.login{
-    width: 40px;
-    height: 40px;
+.icon {
+    width: auto; 
+    height: 80px;
     margin-left: 20px;
 }
-.my_info{
-    width: 40px;
-    height: 40px;
-    margin-left: 30px;
 
+.login, .my_info {
+    width: 70px;
+    height: 40px;
+    margin-left: 20px;
+    text-align: center;
 }
-.nav_bar{
+.login a, .my_info a{
+    width: 100%;
+    height: 100%;
+    text-decoration-line: none;
+}
+.login p, .my_info p{
+    margin: 0;
+    color: black;
+}
+
+
+.nav_bar {
     width: 100%;
     height: 50px;
     background-color: dodgerblue;
-    border-bottom: blue;
+    border-bottom: 2px solid blue; 
 }
-.nav_list{
-    width: 30%;
+
+.nav_list {
+    width: 80%; 
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 0 auto; 
 }
 
-.nav_list li{
+.nav_list li {
     display: flex;
-    width: 20%;
-    height: 100%;
-    list-style: none;
-    line-height: 45px;
-    justify-content: center;
     align-items: center;
-}
-.nav_list li:hover{
-    color: blue;
-}
-.nav_list li a{
-    font-size: 20px;
+    list-style: none;
+    font-size: 18px; 
     color: white;
-    text-decoration-line: none;
+    text-align: center;
 }
 
+.nav_list li:hover {
+    color: lightblue; 
+}
 
+.nav_list li a {
+    text-decoration: none; 
+    color: inherit; 
+}

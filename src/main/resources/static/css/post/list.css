@@ -71,12 +71,17 @@
 .view_cnt{
     width: 100px;
 }
-.writebutton{
+.write_button_zone{
     width: 1200px;
     margin: 0 auto;
 }
-.writebutton button{
+.write_button{
     width:120px;
+    height: 50px;
+}
+
+.write_button button{
+    width: 120px;
     height: 50px;
     background-color: dodgerblue;
     color: white;
@@ -85,7 +90,11 @@
     border-radius: 10px;
     float: right;
     margin-bottom: 50px;
-
 }
-
-
+.write_button button:hover{
+    cursor: pointer;
+    border: 2px solid dodgerblue;
+    background-color: white;
+    color: dodgerblue;
+    border-radius: 10px;
+}
