@@ -7,7 +7,7 @@
     width: 1200px;
     margin: 0 auto;
     margin-top: 30px;
-    height: 1000px;
+    height: 1100px;
     position: relative; /* 중요: 자식 요소의 위치를 기준으로 할 수 있게 설정 */
 }
 .user_info{
@@ -56,23 +56,34 @@
     margin: 0 auto;
     margin-top: 50px;
 }
-.write_button{
-    width:120px;
-    height: 50px;
+.bt_zone{
+    width: 270px;
+    float: right;
+    display: flex;
 }
-
-.write_button button{
-    width: 120px;
+.back{
+    width:120px;
     height: 50px;
     background-color: dodgerblue;
     color: white;
     font-size: 25px;
     border: none;
     border-radius: 10px;
-    float: right;
+    margin-bottom: 50px;
+    margin-right: 30px;
+}
+.write_button{
+    width:120px;
+    height: 50px;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 10px;
     margin-bottom: 50px;
 }
-.write_button button:hover{
+
+.back:hover, .write_button:hover{
     cursor: pointer;
     border: 2px solid dodgerblue;
     background-color: white;

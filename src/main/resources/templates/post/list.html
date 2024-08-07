@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>게시판</title>
     <link rel="stylesheet" th:href="@{/css/post/list.css}">
-    <!-- <script th:src="@{/js/list.js}"></script> -->
+    <script th:src="@{/js/post/list.js}"></script>
 </head>
 <body>
     <th:block th:replace="~{/layout/header}"></th:block>
@@ -15,28 +15,7 @@
                 <div class="pt_top">
                     <h2>게시판</h2>
                 </div>
-                <div class="post">
-                    <a href="">
-                        <div class="pt_number">
-                            <h3>1</h3>
-                        </div>
-                        <div class="pt_title">
-                            <h3>테스트</h3>
-                        </div>
-                        <div class="writer">
-                            <h3>정상현</h3>
-                        </div>
-                        <div class="create_time">
-                            <h4>2024.08.05</h4>
-                        </div>
-                        <div class="pt_recommand">
-                            <p>추천수 : 25</p>
-                        </div>
-                        <div class="view_cnt">
-                            <p>조회수 : 300</p>
-                        </div>
-                    </a>
-                </div>
+                <!-- 이곳에 JavaScript로 동적으로 포스트 리스트를 추가할 것입니다. -->
             </div>
         </div>
         <div class="write_button_zone">

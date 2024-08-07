@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- jQuery 라이브러리 추가 -->
+    <!-- jQuery 라이브러리 추가 (최신 버전만 로드) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Thymeleaf에서 정적 리소스 경로를 사용하여 스타일 시트 추가 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css">
-    <script type="text/JavaScript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Summernote 라이브러리 추가 -->
     <script type="text/JavaScript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.js"></script>
     <script type="text/JavaScript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script>
+    <!-- 커스텀 JavaScript 파일 추가 -->
+    <script type="text/JavaScript" th:src="@{/js/post/write.js}"></script>
     <link rel="stylesheet" th:href="@{/css/post/write.css}">
 </head>
 <body>
@@ -20,48 +22,28 @@
             <div class="user_info">
                 <div id="nickname" class="nickname">
                     <p>닉네임 : </p>
-                    <p>여기에 닉네임</p>
+                    <p th:text="${user.nickname}"></p>
+                    <p id="userId" th:text="${user.id}" style="display: none;"></p>
                 </div>
                 <div id="title" class="title">
                     <p>제목</p>
-                    <input type="text" placeholder="제목을 입력하세요.">
+                    <input id="postTitle" type="text" placeholder="제목을 입력하세요.">
                 </div>
             </div>
             <div id="summernote"></div>
             <div class="write_button_zone">
-                <a th:href="@{/user/posts}" class="write_button">
-                    <button>등록</button>
-                </a>    
+                <div class="bt_zone">
+                    <button type="button" class="back" id="back">
+                        돌아가기
+                    </button>
+    
+                    <button type="button" id="submitPost" class="write_button">
+                        등록
+                    </button>
+                </div>
             </div>
         </div>
     </div>
     <th:block th:replace="~{/layout/footer}"></th:block>
-
 </body>
- <!-- JavaScript 코드 -->
- <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: '100%',             // 에디터 높이를 100%로 설정
-            minHeight: 850,            // 최소 높이 설정 해제
-            maxHeight: 850,            // 최대 높이 설정 해제
-            focus: true,                // 에디터 로딩 후 포커스를 맞출지 여부
-            lang: "ko-KR",              // 한글 설정
-            placeholder: '최대 2048자까지 쓸 수 있습니다', // placeholder 설정
-            toolbar: [                 // Summernote의 툴바 설정
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                ['color', ['forecolor', 'color']],
-                ['table', ['table']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['insert', ['picture', 'link', 'video']],
-                ['view', ['fullscreen', 'help']]
-            ],
-            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체', '바탕체'],
-            fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36', '50', '72']
-        });
-    });
-</script>
 </html>

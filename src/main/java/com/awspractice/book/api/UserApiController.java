@@ -16,9 +16,5 @@ public class UserApiController {
 
     private final UserService service;
 
-    @GetMapping("/user/myinfo")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
-        UserDTO user = service.getUserById(id);
-        return ResponseEntity.ok(user);
-    }
+
 }

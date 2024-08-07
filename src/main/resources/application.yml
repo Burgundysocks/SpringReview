@@ -21,7 +21,6 @@ spring:
             redirect-uri: "{baseUrl}/login/oauth2/code/google"
             scope: profile, email
 
-
 mybatis:
   config-location: classpath:/mybatis-config.xml
   mapper-locations: classpath:/mapper/*.xml
@@ -30,6 +29,7 @@ mybatis:
 logging:
   level:
     org.springframework.security: DEBUG
-    org.springframework.web: DEBUG
-    org.apache.coyote.http11: DEBUG
-    org.apache.tomcat.util.net: DEBUG
+# src/main/resources/application.yml
+file:
+  upload:
+    path: ${PROJECT_ROOT}/src/main/resources/static/assets/images/upload/

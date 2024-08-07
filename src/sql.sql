@@ -15,7 +15,7 @@ CREATE TABLE user (
 CREATE TABLE post (
     post_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     post_title VARCHAR(255) NOT NULL,
-    post_content TEXT,
+    post_content LONGTEXT,
     user_id BIGINT,   
     create_at DATETIME DEFAULT NOW(), 
     like_cnt BIGINT DEFAULT 0,

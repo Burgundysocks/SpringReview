@@ -10,12 +10,11 @@ import lombok.Setter;
 @Getter @Setter
 //필드의 게터와 세터
 public class PostDTO {
-    private long postId;
+    private Long postId;
     private String postTitle;
     private String postContent;
     private String userId;
     private String CreateAt;
     private long likeCnt;
     private long viewCnt;
-
 }

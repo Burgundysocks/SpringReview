@@ -30,7 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/board/public/**").permitAll()
                         .requestMatchers("/board/user/**").hasRole("USER")
                         .requestMatchers("/api/public/**").permitAll()
-                        .requestMatchers("/api/user/**").hasRole("USER")
+                        .requestMatchers("/api/user/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

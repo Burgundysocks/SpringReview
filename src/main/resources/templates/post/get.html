@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" th:href="@{/css/post/get.css}">
+    <script th:src="@{}"></script>
+</head>
+<body>
+    <th:block th:replace="~{/layout/header}"></th:block>
+    <div id="wrap">
+        <div class="main_container">
+            <div class="user_info">
+                <div id="nickname" class="nickname">
+                    <p>닉네임 : </p>
+                    <p th:text="${user.nickname}"></p>
+                    <p id="userId" th:text="${user.id}" style="display: none;"></p>
+                </div>
+                <div id="title" class="title">
+                    <h3 id="postId" th:text="${post.postId}"></h3>  
+                    <h4 id="postTitle" th:text="${post.postTitle}"></h4>  
+                    <p id="userId" th:text="${user.nickname}"></p>
+                    <p id="createAt" th:text="${post.createAt}"></p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>    
+    <th:block th:replace="~{/layout/footer}"></th:block>
+</body>
+</html>
