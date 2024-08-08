@@ -17,6 +17,8 @@ public interface PostMapper {
 
     PostDTO getPostById(long postId);
 
+    PostDTO getLastPost(Long userId);
+
 
     //U
     int updatePost(PostDTO post);

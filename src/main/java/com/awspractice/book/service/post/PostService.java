@@ -7,7 +7,8 @@ import java.util.List;
 public interface PostService {
     PostDTO regist(PostDTO pdto);
     List<PostDTO> getPosts();
-    PostDTO getPostById(long postId);
-    boolean updatePost(PostDTO pdto);
+    PostDTO getPostById(Long postId);
+    PostDTO getLastPost(Long userId);
+    boolean updatePost(Long postId, PostDTO pdto);
     boolean deletePostById(long postId);
 }

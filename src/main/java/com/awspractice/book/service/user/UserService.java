@@ -2,8 +2,6 @@ package com.awspractice.book.service.user;
 
 import com.awspractice.book.domain.dto.UserDTO;
 
-import java.util.List;
-
 public interface UserService {
 
     UserDTO join(UserDTO userDTO);
@@ -12,7 +10,7 @@ public interface UserService {
 
     UserDTO getUserById(Long id);
 
-    UserDTO update(UserDTO userDTO);
+    boolean update(Long id, UserDTO userDTO);
 
     boolean deleteUser(Long id);
 

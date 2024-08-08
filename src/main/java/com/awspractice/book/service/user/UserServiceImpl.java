@@ -5,8 +5,6 @@ import com.awspractice.book.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,9 +28,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO update(UserDTO userDTO) {
-        userMapper.update(userDTO);
-        return userDTO;
+    public boolean update(Long id, UserDTO userDTO) {
+        if (userMapper.update(userDTO)==1){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     @Override

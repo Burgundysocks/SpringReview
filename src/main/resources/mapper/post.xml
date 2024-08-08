@@ -39,11 +39,19 @@
         WHERE p.post_id = #{postId}
     </select>
 
+    <select id="getLastPost">
+        SELECT * FROM POST
+        WHERE user_id = #{userId}
+        ORDER BY post_id DESC
+        LIMIT 1;
+
+    </select>
+
 
     <update id="updatePost">
         UPDATE post
         SET post_title = #{postTitle},
-            post_content = #{postContent},
+            post_content = #{postContent}
         WHERE post_id = #{postId}
     </update>
 

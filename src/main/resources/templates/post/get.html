@@ -5,26 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
     <link rel="stylesheet" th:href="@{/css/post/get.css}">
-    <script th:src="@{}"></script>
+    <script th:src="@{/js/post/get.js}"></script>
 </head>
 <body>
     <th:block th:replace="~{/layout/header}"></th:block>
     <div id="wrap">
         <div class="main_container">
-            <div class="user_info">
-                <div id="nickname" class="nickname">
-                    <p>닉네임 : </p>
-                    <p th:text="${user.nickname}"></p>
-                    <p id="userId" th:text="${user.id}" style="display: none;"></p>
-                </div>
-                <div id="title" class="title">
-                    <h3 id="postId" th:text="${post.postId}"></h3>  
-                    <h4 id="postTitle" th:text="${post.postTitle}"></h4>  
-                    <p id="userId" th:text="${user.nickname}"></p>
-                    <p id="createAt" th:text="${post.createAt}"></p>
-                   
+            <div th:if="${post.userId == user.id}">
+                <div class="modidelete">
+                    <button id="modify">수정</button>
+                    <button id="delete">삭제</button>
                 </div>
             </div>
+            
+            <div class="user_info">
+                <div id="nickname" class="nickname">
+                    <p>닉네임 : <span id="nicknameText"></span></p>
+                </div>
+                <div id="title" class="title">
+                    <h4 id="postTitle"></h4>  
+                </div>
+                <p id="createAt"></p>
+            </div>
+            <div class="pt_contents" id="postContent"></div>
         </div>
     </div>    
     <th:block th:replace="~{/layout/footer}"></th:block>

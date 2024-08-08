@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -51,12 +53,20 @@ public class PostApiController {
         return ResponseEntity.ok(post);
     }
 
-    @PutMapping(value="/user/posts/{postId}", consumes = "application/json")
-    public ResponseEntity<PostDTO> modify(@RequestBody PostDTO postDTO) {
-        return service.updatePost(postDTO)?
-            new ResponseEntity<PostDTO>(HttpStatus.OK) :
-            new ResponseEntity<PostDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+    @PutMapping(value = "/user/posts/{postId}", consumes = "application/json")
+    public ResponseEntity<Map<String, String>> modify(@PathVariable("postId") Long postId, @RequestBody PostDTO postDTO) {
+        Map<String, String> response = new HashMap<>();
+        boolean isUpdated = service.updatePost(postId, postDTO);
+        if (isUpdated) {
+            response.put("message", "게시글이 성공적으로 수정되었습니다.");
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("message", "게시글 저장 중 오류가 발생했습니다.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
+
 
     @DeleteMapping(value="/user/posts/{postId}")
     public ResponseEntity<String> remove(@PathVariable("postId") long postId){
