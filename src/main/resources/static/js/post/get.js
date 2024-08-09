@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('postContent').innerHTML = data.postContent; 
 
             document.getElementById('modify').addEventListener('click', function() {
-                window.location.href = `/board/user/modify/${postId}`; 
+                window.location.href = `/api/user/posts/{postId}`; 
             });
 
             document.getElementById('delete').addEventListener('click', function() {

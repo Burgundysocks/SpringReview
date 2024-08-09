@@ -37,6 +37,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<PostDTO> getPostsByUserId(Long userId) {
+        return pmapper.getPostsByUserId(userId);
+    }
+
+    @Override
     public boolean updatePost(Long postId, PostDTO pdto) {
         if (pmapper.updatePost(pdto)==1){
             return true;

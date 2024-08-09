@@ -20,7 +20,17 @@ public class UserPageController {
     @GetMapping("/user/public/info")
     public String userinfo(HttpSession session, Model model) {
         SessionUser sessionUser = (SessionUser) session.getAttribute("user");
+        if (sessionUser == null) {
+            return "redirect:/login"; // 로그인 세션이 없으면 리디렉션
+        }
+
+        UserDTO userinfo = service.getUserById(sessionUser.getId());
         model.addAttribute("user", sessionUser);
+        model.addAttribute("userinfo", userinfo);
+
+        System.out.println("Session ID: " + sessionUser.getId());
+        System.out.println("Userinfo ID: " + userinfo.getId());
+
         return "user/userinfo";
     }
 }

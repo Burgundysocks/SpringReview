@@ -21,12 +21,12 @@
     align-items: center;
 }
 
-.pt_top h2{
+.pt_top p{
     margin: 0;
-    height: 30px;
     margin-left: 20px;
     color: white;
     width: 900px;
+    font-size: 30px;
 }
 .post{
     display: flex;

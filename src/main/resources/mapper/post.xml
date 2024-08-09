@@ -38,6 +38,18 @@
                  JOIN user u ON p.user_id = u.id
         WHERE p.post_id = #{postId}
     </select>
+    <select id="getPostsByUserId">
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_content,
+            p.user_id,
+            p.create_at,
+            u.nickname
+        FROM post p
+                 JOIN user u ON p.user_id = u.id
+        WHERE p.user_id = #{userId}
+    </select>
 
     <select id="getLastPost">
         SELECT * FROM POST

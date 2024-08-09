@@ -11,7 +11,7 @@
     <th:block th:replace="~{/layout/header}"></th:block>
     <div id="wrap">
         <div class="main_container">
-            <div th:if="${post.userId == user.id}">
+            <div th:if="${user != null} and ${post.userId == user.id}">
                 <div class="modidelete">
                     <button id="modify">수정</button>
                     <button id="delete">삭제</button>

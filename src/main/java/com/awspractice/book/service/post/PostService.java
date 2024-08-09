@@ -9,6 +9,7 @@ public interface PostService {
     List<PostDTO> getPosts();
     PostDTO getPostById(Long postId);
     PostDTO getLastPost(Long userId);
+    List<PostDTO> getPostsByUserId(Long userId);
     boolean updatePost(Long postId, PostDTO pdto);
     boolean deletePostById(long postId);
 }

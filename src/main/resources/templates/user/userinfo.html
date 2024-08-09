@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/user/userinfo.css}">
+    <script th:src="@{/js/user/userinfo.js}"></script>
 </head>
 <body>
     <th:block th:replace="~{/layout/header}"></th:block>
     <div id="wrap">
         <div class="main_container">
             <div class="userinfo">
-                <div class="nickName">닉네임 : [[${user.nickname}]]</div>
-                <div class="email">이메일 : [[${user.email}]]</div>
-                <div class="password">비밀번호 : </div>
-                <div class="countPost"> 작성 글 갯수 : </div>
+                <div class="info_head"><p>유저정보</p></div>
+                <div class="nickname"></div>
+                <div class="email"></div>
             </div>
-        </div>
-        <div class="userPost">
-            <div class="up_head">
-                작성글
+            <div th:if="${user.id} == ${userinfo.id}" class="modi_btn">
+                <button id="modify">개인 정보 수정</button>
             </div>
-            <div class="up_list">
-                여긴 리스트 
+            <div class="user_post">
+                <div class="up_head">
+                    <p>작성글</p>
+                </div>
+                <div class="up_list">
+                    여긴 리스트 
+                </div>
             </div>
         </div>
     </div>

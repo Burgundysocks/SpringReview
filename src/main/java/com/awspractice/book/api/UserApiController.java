@@ -19,13 +19,14 @@ public class UserApiController {
 
     private final UserService service;
 
-    @GetMapping("/public/user/userinfo")
-    public ResponseEntity<UserDTO> userInfo(@PathVariable Long userId) {
-        UserDTO user = service.getUserById(userId);
+    @GetMapping("/public/user/userinfo/{id}")
+    public ResponseEntity<UserDTO> userInfo(@PathVariable Long id) {
+        UserDTO user = service.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
-    @PutMapping("/user/usermodi/{userId}")
+
+    @PutMapping("/user/usermodi/{id}")
     public ResponseEntity<Map<String, String>> updateUser(@PathVariable("userId") Long userId, @RequestBody UserDTO user) {
         Map<String, String> response = new HashMap<>();
         boolean isUpdated = service.update(userId, user);

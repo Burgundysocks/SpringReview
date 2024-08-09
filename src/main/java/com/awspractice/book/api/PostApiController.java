@@ -39,8 +39,6 @@ public class PostApiController {
     }
 
 
-
-
     @GetMapping("/public/posts/list")
     public ResponseEntity<List<PostDTO>> list() {
         List<PostDTO> posts = service.getPosts();
@@ -53,6 +51,11 @@ public class PostApiController {
         return ResponseEntity.ok(post);
     }
 
+    @GetMapping("/public/userPosts/{userId}")
+    public ResponseEntity<List<PostDTO>> getByUserId(@PathVariable Long userId) {
+        List<PostDTO> posts = service.getPostsByUserId(userId);
+        return ResponseEntity.ok(posts);
+    }
 
     @PutMapping(value = "/user/posts/{postId}", consumes = "application/json")
     public ResponseEntity<Map<String, String>> modify(@PathVariable("postId") Long postId, @RequestBody PostDTO postDTO) {
