@@ -33,4 +33,11 @@ public class UserPageController {
 
         return "user/userinfo";
     }
+
+    @GetMapping("/user/personal/modify")
+    public String usermodify(HttpSession session, Model model) {
+        SessionUser sessionUser = (SessionUser) session.getAttribute("user");
+        model.addAttribute("user", sessionUser);
+        return "user/usermodify";
+    }
 }

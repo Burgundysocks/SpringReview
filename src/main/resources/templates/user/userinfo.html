@@ -17,7 +17,9 @@
                 <div class="email"></div>
             </div>
             <div th:if="${user.id} == ${userinfo.id}" class="modi_btn">
-                <button id="modify">개인 정보 수정</button>
+                <a th:href="@{/user/personal/modify}">
+                    <button id="modify">개인 정보 수정</button>
+                </a>
             </div>
             <div class="user_post">
                 <div class="up_head">
@@ -31,4 +33,8 @@
     </div>
     <th:block th:replace="~{/layout/footer}"></th:block>
 </body>
+<script th:inline="javascript">
+    const userId = /*[[${user.id}]]*/ '0';
+    const userinfoId = /*[[${userinfo.id}]]*/'0';
+</script>
 </html>
