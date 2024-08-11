@@ -28,7 +28,7 @@
         SET email = #{email},
             nickname = #{nickname},
             password = #{password},
-            picture = #{picture},
+            picture = #{picture}
         WHERE id = #{id}
     </update>
 

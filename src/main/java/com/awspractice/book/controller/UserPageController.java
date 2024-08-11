@@ -40,4 +40,6 @@ public class UserPageController {
         model.addAttribute("user", sessionUser);
         return "user/usermodify";
     }
+
+
 }

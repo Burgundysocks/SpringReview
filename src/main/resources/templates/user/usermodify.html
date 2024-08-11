@@ -13,23 +13,28 @@
         <div class="main_container">
             <div class="userinfo">
                 <div class="info_head"><p>유저정보</p></div>
-                <div class="nickname">
-                    <input type="text" value="">
-                </div>
-                <div class="email">
-                    <input type="text" value="">
-                </div>
-                <div class="password">
-                    <input type="text" value="">
-                </div>
+                <table class="userinfo_table">
+                    <tr>
+                        <td>닉네임 :</td>
+                        <td><input type="text" class="nickname" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>이메일 :</td>
+                        <td><input type="text" class="email" value=""></td>
+                    </tr>
+                    <tr class="password_row" style="display: none;">
+                        <td>비밀번호 :</td>
+                        <td><input type="password" class="password" value=""></td>
+                    </tr>
+                </table>
             </div>
             <div class="btn_zone">
+                <div class="btn">
                 <a th:href="@{/user/public/info}">
                     <button id="cancel">취소</button>
                 </a>
-                <a th:href="@{/user/user/modi}">
-                    <button id="modify">수정</button>
-                </a>
+                <button id="modify">수정</button>                    
+                </div>
             </div>
         </div>
     </div>
@@ -37,6 +42,5 @@
 </body>
 <script th:inline="javascript">
     const userId = /*[[${user.id}]]*/ '0';
-
 </script>
 </html>

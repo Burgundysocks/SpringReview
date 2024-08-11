@@ -26,8 +26,10 @@ public class UserApiController {
     }
 
 
-    @PutMapping("/user/usermodi/{id}")
+    @PutMapping("/user/usermodi/{userId}")
     public ResponseEntity<Map<String, String>> updateUser(@PathVariable("userId") Long userId, @RequestBody UserDTO user) {
+        user.setId(userId);
+
         Map<String, String> response = new HashMap<>();
         boolean isUpdated = service.update(userId, user);
         if (isUpdated) {
@@ -38,4 +40,5 @@ public class UserApiController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
 }

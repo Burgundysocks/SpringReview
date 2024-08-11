@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.net.URLEncoder;
+
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -36,8 +38,11 @@ public class SecurityConfig {
                 )
                 // 로그아웃 설정
                 .logout(logout -> logout
+                        .logoutUrl("/logout") // 로그아웃 요청 URL
                         .logoutSuccessUrl("/") // 로그아웃 후 리디렉션할 URL
+
                 )
+
 
                 // OAuth2 로그인 설정
                 .oauth2Login(oauth2Login -> oauth2Login
