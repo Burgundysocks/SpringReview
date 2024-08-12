@@ -1,5 +1,6 @@
 package com.awspractice.book.service.post;
 
+import com.awspractice.book.domain.dto.PageDTO;
 import com.awspractice.book.domain.dto.PostDTO;
 import com.awspractice.book.mapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDTO> getPosts() {
-        return pmapper.getPosts();
+    public List<PostDTO> getPosts(PageDTO page) {
+        return pmapper.getPosts(page);
+    }
+
+    @Override
+    public long getTotal() {
+        return pmapper.getTotal();
     }
 
     @Override

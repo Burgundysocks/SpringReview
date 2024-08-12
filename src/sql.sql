@@ -6,8 +6,8 @@ CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    nickname varchar(255) NULL,
-    password varchar(255) NULL,
+    nickname VARCHAR(255) NULL,
+    password VARCHAR(255) NULL,
     picture VARCHAR(255),
     role VARCHAR(50) NOT NULL
 );
@@ -22,8 +22,24 @@ CREATE TABLE post (
     view_cnt BIGINT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
+CREATE TABLE comment (
+    comment_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    post_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    parent_id BIGINT, 
+    content LONGTEXT NOT NULL,
+    create_at DATETIME DEFAULT NOW(),
+    FOREIGN KEY (post_id) REFERENCES post(post_id),
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (parent_id) REFERENCES comment(comment_id)
+);
+
+
+
 select * from user;
 drop table user;
 
 select * from post;
 drop table post;
+

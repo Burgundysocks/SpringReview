@@ -10,9 +10,8 @@
         VALUES (#{postTitle}, #{postContent}, #{userId}, NOW())
     </insert>
 
-
-
-    <select id="getPosts">
+    <!-- 페이징된 포스트 목록 가져오기 -->
+    <select id="getPosts" resultType="com.awspractice.book.domain.dto.PostDTO">
         SELECT
             p.post_id,
             p.post_title,
@@ -23,10 +22,16 @@
         FROM post p
                  JOIN user u ON p.user_id = u.id
         ORDER BY p.post_id DESC
+            LIMIT #{pageSize} OFFSET #{startRow}
     </select>
 
+    <select id="getTotal">
+        SELECT COUNT(*) FROM
+        post WHERE
+        post_id > 0
+    </select>
 
-    <select id="getPostById">
+    <select id="getPostById" resultType="com.awspractice.book.domain.dto.PostDTO">
         SELECT
             p.post_id,
             p.post_title,
@@ -38,7 +43,8 @@
                  JOIN user u ON p.user_id = u.id
         WHERE p.post_id = #{postId}
     </select>
-    <select id="getPostsByUserId">
+
+    <select id="getPostsByUserId" resultType="com.awspractice.book.domain.dto.PostDTO">
         SELECT
             p.post_id,
             p.post_title,
@@ -49,16 +55,16 @@
         FROM post p
                  JOIN user u ON p.user_id = u.id
         WHERE p.user_id = #{userId}
+        ORDER BY p.post_id DESC
+            LIMIT #{pageSize} OFFSET #{startRow}
     </select>
 
-    <select id="getLastPost">
-        SELECT * FROM POST
+    <select id="getLastPost" resultType="com.awspractice.book.domain.dto.PostDTO">
+        SELECT * FROM post
         WHERE user_id = #{userId}
         ORDER BY post_id DESC
-        LIMIT 1;
-
+            LIMIT 1;
     </select>
-
 
     <update id="updatePost">
         UPDATE post
@@ -67,11 +73,9 @@
         WHERE post_id = #{postId}
     </update>
 
-
     <delete id="deletePostById">
         DELETE FROM post
         WHERE post_id = #{postId}
     </delete>
-
 
 </mapper>

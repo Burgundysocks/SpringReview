@@ -1,5 +1,6 @@
 package com.awspractice.book.mapper;
 
+import com.awspractice.book.domain.dto.PageDTO;
 import com.awspractice.book.domain.dto.PostDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,7 +14,8 @@ public interface PostMapper {
 
 
     //R
-    List<PostDTO> getPosts();
+    List<PostDTO> getPosts(PageDTO page);
+    long getTotal();
 
     PostDTO getPostById(long postId);
 

@@ -7,11 +7,12 @@
     width: 1200px;
     margin: 0 auto;
     margin-top: 30px;
-    height: 900px;
+    height: 800px;
 }
 #post_list{
     width:100%;
-    height:100%;
+    height:700px;
+
 }
 .pt_top{
     display: flex;
@@ -71,6 +72,45 @@
 .view_cnt{
     width: 100px;
 }
+
+.pagenation {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.page-link {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: white;
+    background-color: dodgerblue;
+    border: 1px solid dodgerblue;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link.active {
+    background-color: white;
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.page-link:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+
+.page-link.disabled {
+    background-color: #e0e0e0;
+    color: #b0b0b0;
+    border: 1px solid #d0d0d0;
+    cursor: not-allowed;
+}
+
 .write_button_zone{
     width: 1200px;
     margin: 0 auto;
