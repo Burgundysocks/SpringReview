@@ -54,7 +54,7 @@ public class PostApiController {
         response.put("pageSize", page.getPageSize());
         response.put("totalPages", totalPages); // 총 페이지 수
         response.put("posts", posts);
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 
@@ -73,7 +73,7 @@ public class PostApiController {
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok(posts);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
     @PutMapping(value = "/user/posts/{postId}", consumes = "application/json")

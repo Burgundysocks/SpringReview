@@ -10,8 +10,7 @@ import java.util.List;
 public class CommentDTO {
     private Long id;
     private Long postId;
-    private Long parentId; // 대댓글의 부모 댓글 ID
+    private Long userId;
     private String content;
     private String createdAt;
-    private List<CommentDTO> children;
 }
