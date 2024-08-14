@@ -27,12 +27,10 @@ CREATE TABLE comment (
     comment_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     post_id BIGINT NOT NULL,
     user_id BIGINT NOT NULL,
-    parent_id BIGINT, 
     content LONGTEXT NOT NULL,
     create_at DATETIME DEFAULT NOW(),
     FOREIGN KEY (post_id) REFERENCES post(post_id),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (parent_id) REFERENCES comment(comment_id)
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 

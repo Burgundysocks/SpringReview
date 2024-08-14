@@ -22,15 +22,15 @@ public class FileUploadController {
             return "File is empty";
         }
 
-        // Define the path to save the file
         Path path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
         File directory = new File(UPLOAD_DIR);
         if (!directory.exists()) {
-            directory.mkdirs(); // Create directories if they do not exist
+            directory.mkdirs();
         }
         Files.write(path, file.getBytes());
 
-        // Return the URL or path of the uploaded image
+        // 반환하는 경로를 클라이언트가 접근 가능한 URL로 변환
         return "/assets/images/upload/" + file.getOriginalFilename();
     }
+
 }

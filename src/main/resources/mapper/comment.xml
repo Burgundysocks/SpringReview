@@ -5,27 +5,27 @@
 
 <mapper namespace="com.awspractice.book.mapper.CommentMapper">
 
-    <insert id="insertComment" parameterType="Comment">
+    <insert id="insertComment" >
         INSERT INTO comment (post_id, user_id, content, create_at)
         VALUES (#{postId}, #{userId}, #{content}, NOW());
     </insert>
 
 
 
-    <select id="selectCommentsByPostId" parameterType="long" resultType="Comment">
+    <select id="selectCommentsByPostId" >
         SELECT comment_id, post_id, user_id, content, create_at
         FROM comment
         WHERE post_id = #{postId}
         ORDER BY create_at ASC;
     </select>
 
-    <update id="updateComment" parameterType="Comment">
+    <update id="updateComment">
         UPDATE comment
         SET content = #{content}
         WHERE comment_id = #{commentId};
     </update>
 
-    <delete id="deleteComment" parameterType="long">
+    <delete id="deleteComment">
         DELETE FROM comment
         WHERE comment_id = #{commentId};
     </delete>
