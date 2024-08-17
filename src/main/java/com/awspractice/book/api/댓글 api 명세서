@@ -1,0 +1,101 @@
+const insertCommentApi = {
+    method: "POST",
+    path: "/api/public/comment/insert",
+    description: "댓글을 추가합니다.",
+    request: {
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json;charset=utf-8"
+        },
+        body: {
+            "postId": "Number",   // 글 ID
+            "content": "String",  // 댓글 내용
+            "user": "String"    // 작성자
+        }
+    },
+    response: {
+        status: 200,
+        body: {
+            "commentId": "Number",   // 댓글 ID
+            "postId": "Number",      // 글 ID
+            "content": "String",     // 댓글 내용
+            "user": "String",      // 작성자
+            "createdDate": "String"  // 작성일
+        }
+    }
+};
+
+console.log(insertCommentApi);
+
+
+const getCommentsApi = {
+    method: "GET",
+    path: "/api/public/comment/get/{postId}",
+    description: "특정 포스트의 모든 댓글을 가져옵니다.",
+    request: {
+        params: {
+            "postId": "Number" // 글 ID
+        }
+    },
+    response: {
+        status: 200,
+        body: [
+            {
+                "commentId": "Number",   // 댓글 ID
+                "postId": "Number",      // 글 ID
+                "content": "String",     // 댓글 내용
+                "user": "String",      // 작성자
+                "createdDate": "String"  // 작성일
+            }
+        ]
+    }
+};
+
+console.log(getCommentsApi);
+
+
+const updateCommentApi = {
+    method: "PUT",
+    path: "/api/user/comment/{id}",
+    description: "특정 댓글을 업데이트합니다.",
+    request: {
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json;charset=utf-8"
+        },
+        params: {
+            "id": "Number" // 댓글 ID
+        },
+        body: {
+            "content": "String" // 업데이트할 댓글 내용
+        }
+    },
+    response: {
+        status: 200,
+        body: {
+            "comment": "String" // "댓글 업데이트 성공" 또는 "댓글 업데이트 실패"
+        }
+    }
+};
+
+console.log(updateCommentApi);
+
+
+const deleteCommentApi = {
+    method: "DELETE",
+    path: "/api/user/comment/{id}",
+    description: "특정 댓글을 삭제합니다.",
+    request: {
+        params: {
+            "id": "Number" // 댓글 ID
+        }
+    },
+    response: {
+        status: 200,
+        body: {
+            "comment": "String" // "삭제 성공" 또는 "삭제 실패"
+        }
+    }
+};
+
+console.log(deleteCommentApi);

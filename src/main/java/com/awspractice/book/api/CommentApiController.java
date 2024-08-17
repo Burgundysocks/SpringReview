@@ -18,7 +18,7 @@ public class CommentApiController {
 
     private final CommentService cService;
 
-    @PostMapping(value = "/user/comment/insert", consumes = "application/json", produces = "application/json;charset=utf-8")
+    @PostMapping(value = "/public/comment/insert", consumes = "application/json", produces = "application/json;charset=utf-8")
     public ResponseEntity<CommentDTO> insertComment(@RequestBody CommentDTO cdto) {
         CommentDTO comment = cService.addComment(cdto);
         return new ResponseEntity<>(comment, HttpStatus.OK);
