@@ -1,13 +1,193 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
-<!--    <link rel="stylesheet" th:href="@{/css/post/list.css}">-->
-<!--    <script th:src="@{/js/post/list.js}"></script>-->
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #aaa; /* Default to gray */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: not-allowed;
+        }
+
+        .form-group button.enabled {
+            background-color: dodgerblue;
+            cursor: pointer;
+        }
+
+        .form-group button.enabled:hover {
+            background-color: #1e90ff;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            color: #ff0000;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    ㅅㅂ 이게 안되면 안되는데
+<div class="container">
+    <h2>Sign Up</h2>
+    <div class="message" id="message"></div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" oninput="validateForm()">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" oninput="validateForm()">
+    </div>
+    <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input type="text" id="nickname" placeholder="Enter your nickname (optional)" oninput="validateForm()">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" oninput="validateForm()">
+    </div>
+    <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Re-enter your password" oninput="validateForm()">
+        <div id="password-error" class="error"></div>
+    </div>
+    <div class="form-group">
+        <button id="signup-button" disabled>Sign Up</button>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        const passwordError = document.getElementById('password-error');
+        const signupButton = document.getElementById('signup-button');
+
+        passwordError.innerText = '';
+
+        if (password !== confirmPassword && password.length > 0 && confirmPassword.length > 0) {
+            passwordError.innerText = 'Passwords do not match.';
+        }
+
+        if (name && email && password && confirmPassword && password === confirmPassword) {
+            signupButton.disabled = false;
+            signupButton.classList.add('enabled');
+        } else {
+            signupButton.disabled = true;
+            signupButton.classList.remove('enabled');
+        }
+    }
+
+    document.getElementById('signup-button').addEventListener('click', function() {
+        if (!this.disabled) {
+            register();
+        }
+    });
+
+    function register() {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const nickname = document.getElementById('nickname').value.trim();
+        const password = document.getElementById('password').value;
+
+        fetch('/api/public/join', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                nickname: nickname || null,
+                password: password,
+                role: 'USER'
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                const message = document.getElementById('message');
+                console.log('Server response:', data);
+
+                if (data.message && data.message.includes('성공적으로 저장되었습니다.')) {
+                    message.innerText = 'Signup successful';
+                    window.location.href = '/';
+                } else {
+                    message.innerText = 'Signup failed: ' + (data.message || 'Unknown error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const message = document.getElementById('message');
+                message.innerText = 'An error occurred. Please try again.';
+            });
+    }
+
+
+
+
+</script>
 </body>
 </html>

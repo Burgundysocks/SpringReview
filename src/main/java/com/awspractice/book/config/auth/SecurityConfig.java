@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/css/**", "/images/**", "/js/**").permitAll()
                         .requestMatchers("/board/public/**").permitAll()
+                        .requestMatchers("/user/public/**").permitAll()
                         .requestMatchers("/board/user/**").hasRole("USER")
                         .requestMatchers("/api/public/**").permitAll()
                         .requestMatchers("/api/user/**").permitAll()

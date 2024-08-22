@@ -8,16 +8,15 @@ function closeModal() {
     document.getElementById("loginModal").style.display = "none";
 }
 
-function redirectToGoogle() {
+function googleLogin() {
     window.location.href = "/oauth2/authorization/google";
 }
 
-function redirectToSignup() {
-    console.log("Signup button clicked");
+function memberSignup() {
     window.location.href = `/user/public/signup`;
 }
 
-// Close modal when clicking outside of it
+
 window.onclick = function(event) {
     var modal = document.getElementById("loginModal");
     if (event.target == modal) {
