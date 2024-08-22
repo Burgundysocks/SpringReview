@@ -5,63 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/layout/header.css}">
+    <script th:src="@{/js/layout/header.js}"></script>
 </head>
 <body>
-    <div id="wrap">
-        <div class="header">
-            <div class="header_main">
-                <div class="logo">
-                    <a th:href="@{/}">
-                        <img src="" alt="">
-                        <p>왜 안되지</p>
+<div id="wrap">
+    <div class="header">
+        <div class="header_main">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img src="" alt="">
+                    <p>왜 안되지</p>
+                </a>
+            </div>
+            <div class="search_bar">
+                <input type="text">
+                <button>검색</button>
+            </div>
+            <div class="gap"></div>
+            <div class="icon">
+                <!-- 로그인 상태에 따른 표시 -->
+                <div class="login" th:if="${user == null}">
+                    <div id="loginBtn" onclick="openModal()">
+                        <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+                            <path d="M19 12H12M12 12L15 15M12 12L15 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M19 6V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <p>로그인</p>
+                    </div>
+                </div>
+                <!--                    <div class="login" th:if="${user == null}">-->
+                <!--                        <a href="/oauth2/authorization/google">-->
+                <!--                            <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">-->
+                <!--                                <path d="M19 12H12M12 12L15 15M12 12L15 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>-->
+                <!--                                <path d="M19 6V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>-->
+                <!--                            </svg>-->
+                <!--                            <p>로그인</p>-->
+                <!--                        </a>-->
+                <!--                    </div>-->
+                <div class="login" th:unless="${user == null}">
+                    <a href="/logout">
+                        <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+                            <path d="M19 12H12M12 12L15 15M12 12L15 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M19 6V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <p>로그아웃</p>
                     </a>
                 </div>
-                <div class="search_bar">
-                    <input type="text">
-                    <button>검색</button>
+                <div class="my_info">
+                    <a th:href="@{/user/public/info}">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.9998 22.0005C14.5998 22.0005 16.9598 21.0105 18.7398 19.3805C18.6398 18.4405 18.0398 17.5205 16.9698 16.8005C14.2498 14.9805 9.76977 14.9805 7.02977 16.8005C5.95977 17.5205 5.35977 18.4405 5.25977 19.3805C7.03977 21.0105 9.39977 22.0005 11.9998 22.0005ZM11.9998 22.0005C17.5226 22.0005 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47692 22.0005 11.9998 22.0005ZM12.1197 12.7805C12.0497 12.7705 11.9597 12.7705 11.8797 12.7805C10.1197 12.7205 8.71973 11.2805 8.71973 9.51047C8.71973 7.70047 10.1797 6.23047 11.9997 6.23047C13.8097 6.23047 15.2797 7.70047 15.2797 9.51047C15.2697 11.2805 13.8797 12.7205 12.1197 12.7805Z" stroke="#1F2023" stroke-width="1.5" stroke-linecap="round"  stroke-linejoin="round"/>
+                        </svg>
+                        <p>마이페이지</p>
+                    </a>
                 </div>
-                <div class="gap"></div>
-                <div class="icon">
-                    <!-- 로그인 상태에 따른 표시 -->
-                    <div class="login" th:if="${user == null}">
-                        <a href="/oauth2/authorization/google">
-                            <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
-                                <path d="M19 12H12M12 12L15 15M12 12L15 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M19 6V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                            <p>로그인</p>
-                        </a>
-                    </div>
-                    <div class="login" th:unless="${user == null}">
-                        <a href="/logout"> 
-                            <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
-                                <path d="M19 12H12M12 12L15 15M12 12L15 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M19 6V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                            <p>로그아웃</p>
-                        </a>
-                    </div>
-                    <div class="my_info">
-                        <a th:href="@{/user/public/info}">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.9998 22.0005C14.5998 22.0005 16.9598 21.0105 18.7398 19.3805C18.6398 18.4405 18.0398 17.5205 16.9698 16.8005C14.2498 14.9805 9.76977 14.9805 7.02977 16.8005C5.95977 17.5205 5.35977 18.4405 5.25977 19.3805C7.03977 21.0105 9.39977 22.0005 11.9998 22.0005ZM11.9998 22.0005C17.5226 22.0005 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47692 22.0005 11.9998 22.0005ZM12.1197 12.7805C12.0497 12.7705 11.9597 12.7705 11.8797 12.7805C10.1197 12.7205 8.71973 11.2805 8.71973 9.51047C8.71973 7.70047 10.1797 6.23047 11.9997 6.23047C13.8097 6.23047 15.2797 7.70047 15.2797 9.51047C15.2697 11.2805 13.8797 12.7205 12.1197 12.7805Z" stroke="#1F2023" stroke-width="1.5" stroke-linecap="round"  stroke-linejoin="round"/>
-                            </svg>
-                            <p>마이페이지</p>  
-                        </a> 
-                    </div>
-                </div>
-            </div>
-            <div class="nav_bar"> 
-                <ul class="nav_list">
-                    <li><a href="">공지</a></li>
-                    <li><a th:href="@{/board/public/list}">게시판</a></li>
-                    <li><a href="">장터</a></li>                        
-                    <li><a href="">사용기</a></li>
-                    <li><a href="">구인</a></li>
-
-                </ul>
             </div>
         </div>
-    </div>    
+        <div class="nav_bar">
+            <ul class="nav_list">
+                <li><a href="">공지</a></li>
+                <li><a th:href="@{/board/public/list}">게시판</a></li>
+                <li><a href="">장터</a></li>
+                <li><a href="">사용기</a></li>
+                <li><a href="">구인</a></li>
+
+            </ul>
+        </div>
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="modal-header">
+                    <h2>로그인</h2>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="아이디">
+                    <input type="password" placeholder="비밀번호">
+
+                    <button>로그인</button>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="redirectToGoogle()">구글 로그인</button>
+                    <button onclick="redirectToSignup()">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

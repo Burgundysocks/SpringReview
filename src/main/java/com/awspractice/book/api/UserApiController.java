@@ -19,6 +19,13 @@ public class UserApiController {
 
     private final UserService service;
 
+    @PostMapping("/public/join")
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+        UserDTO savedUser = service.saveUser(userDTO);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+
+
     @GetMapping("/public/user/userinfo/{id}")
     public ResponseEntity<UserDTO> userInfo(@PathVariable Long id) {
         UserDTO user = service.getUserById(id);
@@ -34,11 +41,10 @@ public class UserApiController {
         boolean isUpdated = service.update(userId, user);
         if (isUpdated) {
             response.put("message", "정보가 성공적으로 수정되었습니다.");
-            return ResponseEntity.ok(response);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             response.put("message", "수정 중 오류가 발생했습니다.");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }

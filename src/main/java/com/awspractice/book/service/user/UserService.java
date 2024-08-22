@@ -4,6 +4,8 @@ import com.awspractice.book.domain.dto.UserDTO;
 
 public interface UserService {
 
+    UserDTO saveUser(UserDTO userDTO);
+
     UserDTO join(UserDTO userDTO);
 
     UserDTO getUserByEmail(String email);

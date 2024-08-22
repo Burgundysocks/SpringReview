@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // 썸머노트 초기화
     $('#summernote').summernote({
         height: '100%',
@@ -34,25 +34,22 @@ $(document).ready(function() {
         let data = new FormData();
         data.append('file', file);
 
-        $.ajax({
-            data: data,
-            type: 'POST',
-            url: '/upload', // 서버에서 이미지를 처리하는 API URL
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(url) {
+        fetch('/upload', {
+            method: 'POST',
+            body: data,
+        })
+            .then(response => response.text())
+            .then(url => {
                 $(editor).summernote('insertImage', url);
-            },
-            error: function(xhr, status, error) {
+            })
+            .catch(error => {
                 console.error('이미지 업로드 중 오류:', error);
-            }
-        });
+            });
     }
 
     // 등록 버튼 클릭 시
-    $('#submitPost').on('click', function() {
-        const postTitle = $('#postTitle').val();
+    document.getElementById('submitPost').addEventListener('click', function() {
+        const postTitle = document.getElementById('postTitle').value;
         const contentEditableDiv = document.querySelector('.note-editable');
         const postContent = contentEditableDiv.innerHTML;
 
@@ -67,27 +64,26 @@ $(document).ready(function() {
 
         console.log('Sending data:', postDTO); // 요청 데이터를 로그로 출력
 
-        $.ajax({
-            url: '/api/user/posts',
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(postDTO),
-            success: function(response) {
-                const postId = response; // 서버 응답에서 postId 추출
+        fetch('/api/user/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(postDTO)
+        })
+            .then(response => response.json())
+            .then(postId => {
                 console.log(postId);
                 alert('게시글이 성공적으로 저장되었습니다.');
                 window.location.href = `/board/public/recent/${postDTO.userId}`;
-            },
-            error: function(xhr, status, error) {
+            })
+            .catch(error => {
                 console.error('게시글 저장 중 오류:', error);
-                console.error('Error details:', xhr.responseText); // 서버 응답 메시지 로그 출력
                 alert('게시글 저장 중 오류가 발생했습니다.');
-            }
-        });
+            });
     });
 
-    $('#back').on('click', function() {
+    document.getElementById('back').addEventListener('click', function() {
         window.location.href = '/board/public/list';
     });
 });

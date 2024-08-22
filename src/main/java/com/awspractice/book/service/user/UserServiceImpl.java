@@ -3,6 +3,7 @@ package com.awspractice.book.service.user;
 import com.awspractice.book.domain.dto.UserDTO;
 import com.awspractice.book.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -10,6 +11,18 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public UserDTO saveUser(UserDTO userDTO) {
+        // 비밀번호를 암호화합니다.
+        String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
+        userDTO.setPassword(encodedPassword);
+
+        // 암호화된 비밀번호를 데이터베이스에 저장합니다.
+        userMapper.save(userDTO);
+        return userDTO;
+    }
 
     @Override
     public UserDTO join(UserDTO userDTO) {

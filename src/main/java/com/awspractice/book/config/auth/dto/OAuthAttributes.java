@@ -51,6 +51,4 @@ public class OAuthAttributes {
     //OAuthAttributes에서 엔티티를 생성하는 시점은 처음가입할 때
     //이때 기본적으로 권한을 GUEST를 줌
     //생성이 끝나면 SessionUser 클래스 추가
-
-
 }

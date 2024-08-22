@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import java.net.URLEncoder;
 
 @Configuration
 @RequiredArgsConstructor
@@ -42,8 +42,6 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/") // 로그아웃 후 리디렉션할 URL
 
                 )
-
-
                 // OAuth2 로그인 설정
                 .oauth2Login(oauth2Login -> oauth2Login
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
@@ -52,5 +50,11 @@ public class SecurityConfig {
                 );
 
         return http.build();
+    }
+
+    // PasswordEncoder 빈 설정
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

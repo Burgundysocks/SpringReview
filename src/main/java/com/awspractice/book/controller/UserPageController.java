@@ -17,6 +17,11 @@ public class UserPageController {
 
     private final UserService service;
 
+    @GetMapping("/user/public/signup")
+    public String signup() {
+        return "user/signup";
+    }
+
     @GetMapping("/user/public/info")
     public String userinfo(HttpSession session, Model model) {
         SessionUser sessionUser = (SessionUser) session.getAttribute("user");
@@ -34,12 +39,15 @@ public class UserPageController {
         return "user/userinfo";
     }
 
+
     @GetMapping("/user/personal/modify")
     public String usermodify(HttpSession session, Model model) {
         SessionUser sessionUser = (SessionUser) session.getAttribute("user");
         model.addAttribute("user", sessionUser);
         return "user/usermodify";
     }
+
+
 
 
 }
