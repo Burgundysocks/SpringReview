@@ -70,3 +70,7 @@
     font-size: 15px;
     color: white; 
 }
+.pt_contents p img{
+    height: 300px;
+    width: auto !important;
+}

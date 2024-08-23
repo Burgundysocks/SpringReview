@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 @RestController
 public class FileUploadController {
 
-    private static final String UPLOAD_DIR = "src/main/resources/static/assets/images/upload/";
+    private static final String UPLOAD_DIR = "/Users/summernoteImg/";
 
     @PostMapping("/upload")
     public String uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
@@ -30,7 +30,7 @@ public class FileUploadController {
         Files.write(path, file.getBytes());
 
         // 반환하는 경로를 클라이언트가 접근 가능한 URL로 변환
-        return "/assets/images/upload/" + file.getOriginalFilename();
+        return "/Users/summernoteImg/" + file.getOriginalFilename();
     }
 
 }

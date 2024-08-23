@@ -29,11 +29,13 @@ public class SecurityConfig {
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/css/**", "/images/**", "/js/**").permitAll()
+                        .requestMatchers("/Users/summernoteImg/**").permitAll()
                         .requestMatchers("/board/public/**").permitAll()
                         .requestMatchers("/user/public/**").permitAll()
                         .requestMatchers("/board/user/**").hasRole("USER")
                         .requestMatchers("/api/public/**").permitAll()
                         .requestMatchers("/api/user/**").permitAll()
+                        .requestMatchers("/upload").hasRole("USER")
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

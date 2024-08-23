@@ -20,6 +20,11 @@ spring:
             client-secret: ${GOOGLE_CLIENT_SECRET}
             redirect-uri: "{baseUrl}/login/oauth2/code/google"
             scope: profile, email
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+#      업로드 파일 최대 크기 20MB
 
 mybatis:
   config-location: classpath:/mybatis-config.xml
@@ -32,4 +37,5 @@ logging:
 # src/main/resources/application.yml
 file:
   upload:
-    path: ${PROJECT_ROOT}/src/main/resources/static/assets/images/upload/
+    path: /Users/summernoteImg
+#    서버파일내부의 폴더가 아닌 외부 폴더

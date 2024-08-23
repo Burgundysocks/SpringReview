@@ -51,6 +51,10 @@
     width: 1200px !important;
     margin: 0 auto !important;
 }
+.note-editable img{
+    height: 300px;
+    width: auto !important;
+}
 .write_button_zone{
     width: 1200px;
     margin: 0 auto;

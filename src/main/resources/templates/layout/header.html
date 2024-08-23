@@ -33,15 +33,6 @@
                         <p>로그인</p>
                     </div>
                 </div>
-                <!--                    <div class="login" th:if="${user == null}">-->
-                <!--                        <a href="/oauth2/authorization/google">-->
-                <!--                            <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">-->
-                <!--                                <path d="M19 12H12M12 12L15 15M12 12L15 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>-->
-                <!--                                <path d="M19 6V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>-->
-                <!--                            </svg>-->
-                <!--                            <p>로그인</p>-->
-                <!--                        </a>-->
-                <!--                    </div>-->
                 <div class="login" th:unless="${user == null}">
                     <a href="/logout">
                         <svg width="40px" height="40px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
@@ -86,8 +77,8 @@
                     <h2>로그인</h2>
                 </div>
                 <div class="modal-body">
-                    <input type="text" placeholder="아이디">
-                    <input type="password" placeholder="비밀번호">
+                    <input type="text" placeholder="이메일을 입력하세요">
+                    <input type="password" placeholder="비밀번호를 입력하세요">
 
                     <button>로그인</button>
                 </div>
